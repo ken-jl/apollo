@@ -34,6 +34,10 @@
 			<artifactId>slf4j-api</artifactId>
 		</dependency>
 		<!-- end of log -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+		</dependency>
 		<!-- test -->
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>

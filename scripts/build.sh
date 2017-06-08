@@ -1,20 +1,17 @@
 #!/bin/sh
 
 # apollo config db info
-apollo_config_db_url=jdbc:mysql://localhost:3306/ApolloConfigDB?characterEncoding=utf8
+apollo_config_db_url=jdbc:mysql://192.168.1.14:3306/ApolloConfigDB?characterEncoding=utf8
 apollo_config_db_username=root
-apollo_config_db_password=
+apollo_config_db_password=yunnex6j7
 
 # apollo portal db info
-apollo_portal_db_url=jdbc:mysql://localhost:3306/ApolloPortalDB?characterEncoding=utf8
+apollo_portal_db_url=jdbc:mysql://192.168.1.14:3306/ApolloPortalDB?characterEncoding=utf8
 apollo_portal_db_username=root
-apollo_portal_db_password=
+apollo_portal_db_password=yunnex6j7
 
 # meta server url
-dev_meta=http://localhost:8080
-fat_meta=http://localhost:8080
-uat_meta=http://localhost:8080
-pro_meta=http://localhost:8080
+
 
 META_SERVERS_OPTS="-Ddev_meta=$dev_meta -Dfat_meta=$fat_meta -Duat_meta=$uat_meta -Dpro_meta=$pro_meta"
 
@@ -42,3 +39,7 @@ echo "==== building client finished ===="
 
 
 
+export JAVA_OPTS="-server -Xms1280m -Xmx1280m -Xss256k -XX:MetaspaceSize=128m -XX:MaxMetaspaceSize=384m -XX:NewSize=640m -XX:MaxNewSize=640m -XX:SurvivorRatio=8"
+
+
+export JAVA_OPTS="-server -Xms1280m -Xmx1280m -Xss256k -XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=384m -XX:NewSize=1280m -XX:MaxNewSize=1280m -XX:SurvivorRatio=8"

@@ -102,7 +102,8 @@ public class DefaultServerProvider implements ServerProvider {
   }
 
   private void initEnvType() {
-    // 1. Try to get environment from JVM system property
+	  m_env = "DEV";
+    /*// 1. Try to get environment from JVM system property
     m_env = System.getProperty("env");
     if (!Utils.isBlank(m_env)) {
       m_env = m_env.trim();
@@ -128,7 +129,7 @@ public class DefaultServerProvider implements ServerProvider {
 
     // 4. Set environment to null.
     m_env = null;
-    logger.warn("Environment is set to null. Because it is not available in either (1) JVM system property 'env', (2) OS env variable 'ENV' nor (3) property 'env' from the properties InputStream.");
+    logger.warn("Environment is set to null. Because it is not available in either (1) JVM system property 'env', (2) OS env variable 'ENV' nor (3) property 'env' from the properties InputStream.");*/
   }
 
   private void initDataCenter() {
