@@ -47,7 +47,7 @@ public class MetaDomainConsts {
     try {
 		prop = getBootCfg();
 		domains.put(Env.DEV,
-		        env.getProperty("dev_meta", prop.getProperty("dev.meta", DEFAULT_META_URL)));
+		        env.getProperty("dev_meta", prop.getProperty("config.server.url", DEFAULT_META_URL)));
 	} catch (IOException e) {
 		logger.error("加载启动配置文件异常", e);
 	}
