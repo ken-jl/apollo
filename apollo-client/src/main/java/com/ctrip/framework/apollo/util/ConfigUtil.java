@@ -1,5 +1,6 @@
 package com.ctrip.framework.apollo.util;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
@@ -221,8 +222,9 @@ public class ConfigUtil {
   }
 
   public String getDefaultLocalCacheDir() {
-    String cacheRoot = isOSWindows() ? "C:\\opt\\data\\%s" : "/opt/data/%s";
-    return String.format(cacheRoot, getAppId());
+    /*String cacheRoot = isOSWindows() ? "C:\\opt\\data\\%s" : "/opt/data/%s";
+    return String.format(cacheRoot, getAppId());*/
+	  return System.getProperty("user.home") + File.separator + ".yunnex" + File.separator + "data" +File.separator + getAppId();
   }
 
   public boolean isInLocalMode() {
