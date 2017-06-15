@@ -38,7 +38,7 @@ public class SystemUserConfigurer extends WebSecurityConfigurerAdapter {
     http.headers().frameOptions().sameOrigin();
     http.authorizeRequests().anyRequest().hasAnyRole(USER_ROLE);
     http.formLogin();
-    http.logout().invalidateHttpSession(true).clearAuthentication(true);
+    http.logout().logoutUrl("/user/logout").logoutSuccessUrl("/").invalidateHttpSession(true).clearAuthentication(true);
   }
 
   @Autowired
