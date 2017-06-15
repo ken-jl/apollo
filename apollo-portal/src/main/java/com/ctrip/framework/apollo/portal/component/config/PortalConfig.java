@@ -1,33 +1,31 @@
 package com.ctrip.framework.apollo.portal.component.config;
 
 
-import com.google.common.base.Strings;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-
-import com.ctrip.framework.apollo.common.config.RefreshableConfig;
-import com.ctrip.framework.apollo.common.config.RefreshablePropertySource;
-import com.ctrip.framework.apollo.core.enums.Env;
-import com.ctrip.framework.apollo.portal.entity.vo.Organization;
-import com.ctrip.framework.apollo.portal.service.PortalDBPropertySource;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
 import java.lang.reflect.Type;
 import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.ctrip.framework.apollo.common.config.RefreshableConfig;
+import com.ctrip.framework.apollo.common.config.RefreshablePropertySource;
+import com.ctrip.framework.apollo.core.enums.Env;
+import com.ctrip.framework.apollo.portal.entity.vo.Organization;
+import com.ctrip.framework.apollo.portal.service.PortalDBPropertySource;
+import com.google.common.base.Strings;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 @Component
 public class PortalConfig extends RefreshableConfig {
 
   private Gson gson = new Gson();
-  private static final Type ORGANIZATION = new TypeToken<List<Organization>>() {
-  }.getType();
+  private static final Type ORGANIZATION = new TypeToken<List<Organization>>() {}.getType();
 
 
   @Autowired
@@ -43,7 +41,8 @@ public class PortalConfig extends RefreshableConfig {
    * Level: important
    **/
   public List<Env> portalSupportedEnvs() {
-    String[] configurations = getArrayProperty("apollo.portal.envs", new String[]{"FAT", "UAT", "PRO"});
+    String[] configurations =
+        getArrayProperty("apollo.portal.envs", new String[] {"FAT", "UAT", "PRO"});
     List<Env> envs = Lists.newLinkedList();
 
     for (String env : configurations) {
@@ -90,7 +89,9 @@ public class PortalConfig extends RefreshableConfig {
   public List<Organization> organizations() {
 
     String organizations = getValue("organizations");
-    return organizations == null ? Collections.emptyList() : gson.fromJson(organizations, ORGANIZATION);
+    return organizations == null
+        ? Collections.emptyList()
+        : gson.fromJson(organizations, ORGANIZATION);
   }
 
   public String portalAddress() {
@@ -100,9 +101,10 @@ public class PortalConfig extends RefreshableConfig {
   public boolean isEmergencyPublishAllowed(Env env) {
     String targetEnv = env.name();
 
-    String[] emergencyPublishSupportedEnvs = getArrayProperty("emergencyPublish.supported.envs", new String[0]);
+    String[] emergencyPublishSupportedEnvs =
+        getArrayProperty("emergencyPublish.supported.envs", new String[0]);
 
-    for (String supportedEnv: emergencyPublishSupportedEnvs) {
+    for (String supportedEnv : emergencyPublishSupportedEnvs) {
       if (Objects.equals(targetEnv, supportedEnv.toUpperCase().trim())) {
         return true;
       }
@@ -169,7 +171,7 @@ public class PortalConfig extends RefreshableConfig {
     return getIntProperty("ctrip.appid", 0);
   }
 
-  //send code & template id. apply from ewatch
+  // send code & template id. apply from ewatch
   public String sendCode() {
     return getValue("ctrip.email.send.code");
   }
@@ -178,7 +180,7 @@ public class PortalConfig extends RefreshableConfig {
     return getIntProperty("ctrip.email.template.id", 0);
   }
 
-  //email retention time in email server queue.TimeUnit: hour
+  // email retention time in email server queue.TimeUnit: hour
   public int survivalDuration() {
     return getIntProperty("ctrip.email.survival.duration", 5);
   }
@@ -225,6 +227,22 @@ public class PortalConfig extends RefreshableConfig {
 
   public String hermesServerAddress() {
     return getValue("hermes.server.address");
+  }
+
+  public String ldapHost() {
+    return getValue("ldap.host");
+  }
+
+  public String ldapDn() {
+    return getValue("ldap.dn");
+  }
+
+  public String ldapPassword() {
+    return getValue("ldap.password");
+  }
+
+  public String ldapSearchbase() {
+    return getValue("ldap.searchbase");
   }
 
 }

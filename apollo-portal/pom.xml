@@ -23,6 +23,16 @@
 			<artifactId>h2</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.jasig.cas.client</groupId>
+			<artifactId>cas-client-integration-tomcat-v7</artifactId>
+			<version>3.4.1</version>
+		</dependency>
+		<dependency>
+	    	<groupId>com.novell.ldap</groupId>
+	    	<artifactId>jldap</artifactId>
+	    	<version>4.3</version>
+	    </dependency>
 	</dependencies>
 	<build>
 		<plugins>
