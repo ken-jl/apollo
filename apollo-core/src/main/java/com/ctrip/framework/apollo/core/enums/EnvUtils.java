@@ -23,6 +23,8 @@ public final class EnvUtils {
         return Env.DEV;
       case "LOCAL":
         return Env.LOCAL;
+      case "DEFAULT":
+        return Env.DEFAULT;
       default:
         return null;
     }
