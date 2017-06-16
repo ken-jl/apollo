@@ -1,8 +1,5 @@
 package com.ctrip.framework.apollo.core.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,6 +9,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Enumeration;
 import java.util.Properties;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.ctrip.framework.apollo.core.ConfigConsts;
 
 public class ResourceUtils {
 
@@ -26,7 +28,7 @@ public class ResourceUtils {
     try {
       if (in == null) {
         // load outside resource under current user path
-        Path path = new File(System.getProperty("user.dir") + configPath).toPath();
+        Path path = new File(ConfigConsts.PROPERTIES_DIR + File.separator + configPath).toPath();
         if (Files.isReadable(path)) {
           in = new FileInputStream(path.toFile());
           logger.debug("Reading config from file {} ", path);

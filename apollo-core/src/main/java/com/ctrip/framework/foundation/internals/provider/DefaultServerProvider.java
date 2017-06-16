@@ -10,6 +10,7 @@ import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.ctrip.framework.apollo.core.ConfigConsts;
 import com.ctrip.framework.foundation.internals.Utils;
 import com.ctrip.framework.foundation.internals.io.BOMInputStream;
 import com.ctrip.framework.foundation.spi.provider.Provider;
@@ -17,8 +18,10 @@ import com.ctrip.framework.foundation.spi.provider.ServerProvider;
 
 public class DefaultServerProvider implements ServerProvider {
   private static final Logger logger = LoggerFactory.getLogger(DefaultServerProvider.class);
-  private static final String SERVER_PROPERTIES_LINUX = "/opt/settings/server.properties";
-  private static final String SERVER_PROPERTIES_WINDOWS = "C:/opt/settings/server.properties";
+  private static final String SERVER_PROPERTIES_LINUX =
+      ConfigConsts.PROPERTIES_DIR + File.separator + ConfigConsts.CONFIG_FILE_NAME;
+  private static final String SERVER_PROPERTIES_WINDOWS =
+      ConfigConsts.PROPERTIES_DIR + File.separator + ConfigConsts.CONFIG_FILE_NAME;
 
   private String m_env;
   private String m_dc;
@@ -103,8 +106,7 @@ public class DefaultServerProvider implements ServerProvider {
   }
 
   private void initEnvType() {
-    m_env = "DEFAULT";
-    /*// 1. Try to get environment from JVM system property
+    // 1. Try to get environment from JVM system property
     m_env = System.getProperty("env");
     if (!Utils.isBlank(m_env)) {
       m_env = m_env.trim();
@@ -128,9 +130,10 @@ public class DefaultServerProvider implements ServerProvider {
       return;
     }
 
+    m_env = "DEFAULT";
     // 4. Set environment to null.
-    m_env = null;
-    logger.warn("Environment is set to null. Because it is not available in either (1) JVM system property 'env', (2) OS env variable 'ENV' nor (3) property 'env' from the properties InputStream.");*/
+    logger.info(
+        "Environment is set to DEFAULT. Because it is not available in either (1) JVM system property 'env', (2) OS env variable 'ENV' nor (3) property 'env' from the properties InputStream.");
   }
 
   private void initDataCenter() {

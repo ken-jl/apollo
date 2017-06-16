@@ -224,7 +224,8 @@ public class ConfigUtil {
   public String getDefaultLocalCacheDir() {
     /*String cacheRoot = isOSWindows() ? "C:\\opt\\data\\%s" : "/opt/data/%s";
     return String.format(cacheRoot, getAppId());*/
-	  return System.getProperty("user.home") + File.separator + ".yunnex" + File.separator + "data" +File.separator + getAppId();
+    return ConfigConsts.PROPERTIES_DIR + File.separator + "cache" + File.separator + "apollo"
+        + File.separator + getAppId();
   }
 
   public boolean isInLocalMode() {
