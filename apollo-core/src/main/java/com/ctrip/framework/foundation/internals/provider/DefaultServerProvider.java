@@ -131,7 +131,7 @@ public class DefaultServerProvider implements ServerProvider {
     }
 
     m_env = "DEFAULT";
-    // 4. Set environment to null.
+    // 4. Set environment to DEFAULT.
     logger.info(
         "Environment is set to DEFAULT. Because it is not available in either (1) JVM system property 'env', (2) OS env variable 'ENV' nor (3) property 'env' from the properties InputStream.");
   }
