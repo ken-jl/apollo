@@ -251,7 +251,8 @@ public class AuthConfiguration {
       filterInitParam.put("/openapi.*", "exclude");
 
       casFilter.setInitParameters(filterInitParam);
-      casFilter.setFilter(filter("org.jasig.cas.client.authentication.AuthenticationFilter"));
+      casFilter.setFilter(
+          filter("com.ctrip.framework.apollo.portal.spi.github.GithubAuthenticationFilter"));
       casFilter.addUrlPatterns("/*");
       casFilter.setOrder(2);
 

@@ -139,6 +139,18 @@ public class PortalConfig extends RefreshableConfig {
     return getValue("email.sender");
   }
 
+  public String emailPassword() {
+    return getValue("email.password");
+  }
+
+  public String emailHost() {
+    return getValue("email.host");
+  }
+
+  public boolean emailEnabled() {
+    return getBooleanProperty("email.enabled", false);
+  }
+
   public String emailTemplateFramework() {
     return getValue("email.template.framework", "");
   }
