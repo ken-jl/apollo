@@ -82,18 +82,18 @@ public class DefaultApplicationProvider implements ApplicationProvider {
 
   private void initAppId() {
     // 1. Get app.id from System Property
-    m_appId = System.getProperty("app.id");
+    m_appId = System.getProperty("app.name");
     if (!Utils.isBlank(m_appId)) {
       m_appId = m_appId.trim();
-      logger.info("App ID is set to {} by app.id property from System Property", m_appId);
+      logger.info("App ID is set to {} by app.name property from System Property", m_appId);
       return;
     }
 
     // 2. Try to get app id from app.properties.
-    m_appId = m_appProperties.getProperty("app.id");
+    m_appId = m_appProperties.getProperty("app.name");
     if (!Utils.isBlank(m_appId)) {
       m_appId = m_appId.trim();
-      logger.info("App ID is set to {} by app.id property from {}", m_appId, APP_PROPERTIES_CLASSPATH);
+      logger.info("App ID is set to {} by app.name property from {}", m_appId, APP_PROPERTIES_CLASSPATH);
       return;
     }
 
