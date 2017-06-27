@@ -59,6 +59,7 @@ public class GithubAuthenticationFilter extends AuthenticationFilter {
 
     if (isExcludeRequest(request)) {
       filterChain.doFilter(request, response);
+      return;
     }
 
     super.doFilter(request, response, filterChain);
