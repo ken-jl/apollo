@@ -45,6 +45,24 @@ public class MetaDomainConsts {
         env.getProperty("pro_meta", prop.getProperty(CONFIG_SERVER_URL, DEFAULT_META_URL)));
     domains.put(Env.DEFAULT,
         env.getProperty("default_meta", prop.getProperty(CONFIG_SERVER_URL, DEFAULT_META_URL)));
+
+    domains.put(Env.DEV_A,
+                    env.getProperty("dev_a_meta", prop.getProperty("dev_a.meta", DEFAULT_META_URL)));
+    domains.put(Env.DEV_B,
+                    env.getProperty("dev_b_meta", prop.getProperty("dev_b.meta", DEFAULT_META_URL)));
+    domains.put(Env.TEST_A,
+                    env.getProperty("test_a_meta", prop.getProperty("test_a.meta", DEFAULT_META_URL)));
+    domains.put(Env.TEST_B,
+                    env.getProperty("test_b_meta", prop.getProperty("test_b.meta", DEFAULT_META_URL)));
+    domains.put(Env.TEST_C,
+                    env.getProperty("test_c_meta", prop.getProperty("test_c.meta", DEFAULT_META_URL)));
+    domains.put(Env.STAGING,
+                    env.getProperty("staging_meta", prop.getProperty("staging.meta", DEFAULT_META_URL)));
+    domains.put(Env.STAGING_MIRROR,
+                    env.getProperty("staging_mirror_meta", prop.getProperty("staging_mirror.meta", DEFAULT_META_URL)));
+    domains.put(Env.PROD,
+                    env.getProperty("prod_meta", prop.getProperty("prod.meta", DEFAULT_META_URL)));
+
   }
 
   public static String getDomain(Env env) {
